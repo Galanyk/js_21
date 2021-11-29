@@ -1,4 +1,4 @@
-const { src, dest, series, parallel } = require('gulp');
+const { src, dest, series, parallel, watch } = require('gulp');
 const concat = require('gulp-concat');
 const clean = require('gulp-clean');
 
@@ -20,6 +20,17 @@ function cleanDist() {
     return src('./dist', { read: false }).pipe(clean());
 };
 
+function createVendorJs() {
+    return src(["./node_modules/jquery/dist/jquery.min.js"]).pipe(concat("vendorJs.js")).pipe(dest('./dist'));
+};
+
+function watchFiles() {
+    return watch("./src/**/*.js", { events: 'all' }, copyJs()),
+        watch("./src/**/*.html", { events: 'all' }, copyHtml()),
+        watch("./src/**/*.css", { events: 'all' }, copyCss());
+};
+
 module.exports = {
-    build: series(cleanDist, parallel(copyHtml, copyJs, copyCss)),
+    build: series(cleanDist, parallel(createVendorJs, copyHtml, copyJs, copyCss)),
+    serve: series(cleanDist, parallel(createVendorJs, copyHtml, copyJs, copyCss), watchFiles),
 };
