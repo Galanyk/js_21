@@ -1,0 +1,30 @@
+{
+    "name": "js_21",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "build": "gulp build",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Galanyk/js_21.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Galanyk/js_21/issues"
+    },
+    "homepage": "https://github.com/Galanyk/js_21#readme",
+    "dependencies": {
+        "jquery": "^3.6.0"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-clean": "^0.4.0",
+        "gulp-cli": "^2.3.0",
+        "gulp-concat": "^2.6.1"
+    }
+}
