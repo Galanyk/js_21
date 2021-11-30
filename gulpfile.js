@@ -25,7 +25,10 @@ function createVendorJs() {
 };
 
 function watchFiles() {
-    return watch("./src/**/*.js", { events: 'all' }, copyJs(), copyCss());
+    return watch(['./src/**/*.js', './src/style.css'], { events: 'all' }, () => {
+        copyCss();
+        return copyJs();
+    });
 };
 
 module.exports = {
